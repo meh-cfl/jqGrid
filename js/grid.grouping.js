@@ -35,6 +35,15 @@ $.jgrid.extend({
 					if ( typeof(grp.visibiltyOnNextGrouping) === 'undefined') {
 						grp.visibiltyOnNextGrouping = [];
 					}
+					if ( typeof(grp.groupOrder) === 'undefined') {
+						grp.groupOrder = [];
+					}
+					if ( typeof(grp.groupText) === 'undefined') {
+						grp.groupText = [];
+					}
+					if ( typeof(grp.groupSummary) === 'undefined') {
+						grp.groupSummary = [];
+					}
 
 					grp.lastvalues=[];
 					grp.groups =[];
