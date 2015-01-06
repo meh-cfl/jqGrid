@@ -18,16 +18,22 @@ $.extend($.jgrid,{
 		recordtext: "Pokaż {0} - {1} z {2}",
 		emptyrecords: "Brak rekordów do pokazania",
 		loadtext: "Ładowanie...",
-		pgtext : "Strona {0} z {1}"
+		pgtext : "Strona {0} z {1}",
+		pgfirst : "First Page",
+		pglast : "Last Page",
+		pgnext : "Next Page",
+		pgprev : "Previous Page",
+		pgrecs : "Records per Page",
+		showhide: "Toggle Expand Collapse Grid"
 	},
 	search : {
 		caption: "Wyszukiwanie...",
 		Find: "Szukaj",
 		Reset: "Czyść",
-		odata : ['dokładnie', 'różne od', 'mniejsze od', 'mniejsze lub równe', 'większe od', 'większe lub równe', 'zaczyna się od', 'nie zaczyna się od', 'jest w', 'nie jest w', 'kończy się na', 'nie kończy się na', 'zawiera', 'nie zawiera'],
+		odata: [{ oper:'eq', text:"dokładnie"},{ oper:'ne', text:"różne od"},{ oper:'lt', text:"mniejsze od"},{ oper:'le', text:"mniejsze lub równe"},{ oper:'gt', text:"większe od"},{ oper:'ge', text:"większe lub równe"},{ oper:'bw', text:"zaczyna się od"},{ oper:'bn', text:"nie zaczyna się od"},{ oper:'in', text:"jest w"},{ oper:'ni', text:"nie jest w"},{ oper:'ew', text:"kończy się na"},{ oper:'en', text:"nie kończy się na"},{ oper:'cn', text:"zawiera"},{ oper:'nc', text:"nie zawiera"},{ oper:'nu', text:'is null'},{ oper:'nn', text:'is not null'}],
 		groupOps: [	{ op: "AND", text: "oraz" },	{ op: "OR",  text: "lub" }	],
-		matchText: " pasuje",
-		rulesText: " reguły"
+		operandTitle : "Click to select search operation.",
+		resetTitle : "Reset Search Value"
 	},
 	edit : {
 		addCaption: "Dodaj rekord",
@@ -108,6 +114,7 @@ $.extend($.jgrid,{
 			S: function (j) {return '';},
 			srcformat: 'Y-m-d',
 			newformat: 'd.m.Y',
+			parseRe : /[#%\\\/:_;.,\t\s-]/,
 			masks : {
 				ISO8601Long: "Y-m-d H:i:s",
 				ISO8601Short: "Y-m-d",
@@ -121,7 +128,8 @@ $.extend($.jgrid,{
 				UniversalSortableDateTime: "Y-m-d H:i:sO",
 				YearMonth: "F Y"
 			},
-			reformatAfterEdit : false
+			reformatAfterEdit : false,
+			userLocalTime : false
 		},
 		baseLinkUrl: '',
 		showAction: '',

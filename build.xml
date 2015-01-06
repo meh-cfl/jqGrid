@@ -27,6 +27,7 @@
 		<fileset file="js/grid.import.js"/>
 		<fileset file="js/grid.jqueryui.js"/>
 		<fileset file="js/grid.tbltogrid.js"/>
+		<fileset file="js/grid.pivot.js"/>
         </concat>
     </target>
 
@@ -39,6 +40,8 @@
             <arg path="${GoogleCompiler}" />
             <arg value="--warning_level" />
             <arg value="QUIET" />
+            <arg value="--create_source_map" />
+            <arg value="${distdir}/${target.map}" />
             <arg value="--js_output_file" />
             <targetfile />
             <arg value="--js" />
