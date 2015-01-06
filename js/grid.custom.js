@@ -117,6 +117,7 @@ $.jgrid.extend({
 				try {
 					$(this).jqGrid('clearBeforeUnload');
 					$("#gbox_"+$.jgrid.jqID(this.id)).remove();
+					$("#alertmod_"+$.jgrid.jqID(this.id)).remove();
 				} catch (_) {}
 			}
 		});
@@ -180,6 +181,7 @@ $.jgrid.extend({
 	filterToolbar : function(p){
 		p = $.extend({
 			autosearch: true,
+			autosearchDelay: 500,
 			searchOnEnter : true,
 			beforeSearch: null,
 			afterSearch: null,
@@ -548,7 +550,7 @@ $.jgrid.extend({
 											break;
 										default :
 											if(timeoutHnd) { clearTimeout(timeoutHnd); }
-											timeoutHnd = setTimeout(function(){triggerToolbar();},500);
+											timeoutHnd = setTimeout(function(){triggerToolbar();}, p.autosearchDelay);
 									}
 								});
 							}
